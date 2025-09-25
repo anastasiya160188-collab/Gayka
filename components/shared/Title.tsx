@@ -1,32 +1,36 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-type Size = 'sm' | 'md' | 'lg' | 'xl'
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 interface Props{
-   sizes: Size[];
+   sizes: Size;
    text: string;
-   className: string;
+   className?: string;
 }
 
-export const Title: React.FC<Props> = ({className}) => {
+export const Title: React.FC<Props> = ({className, sizes = 'sm', text}) => {
 
    const makeTagBySize = {
-      'sm': 'h6',
-      'md': 'h5',
-      'lg': 'h4',
-      '2xl': 'h3'
-   } as const
+      xs: 'h5',
+      sm: 'h4',
+      md: 'h3',
+      lg: 'h2',
+      xl: 'h1',
+      '2xl': 'h1'
+   } as const;
 
    const makeStyleForTag = {
-      'sm': 'text-xs',
-      'md': 'text-md',
-      'lg': 'text-lg',
-      '2xl': 'text-2xl',
-   } as const
+      xs: 'text-[16px]',
+      sm: 'text-[22px]',
+      md: 'text-[26px]',
+      lg: 'text-[32px]',
+      xl: 'text-[40px]',
+      '2xl': 'text-[48px]',
+   } as const;
 
    const Tag = makeTagBySize[sizes];
   return (
-    <div className={cn('', className)}>Header</div>
+    <Tag className={cn(makeStyleForTag[sizes], className)}>{text}</Tag>
   )
 }

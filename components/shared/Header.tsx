@@ -38,7 +38,7 @@ export const Header: React.FC<Props> = ({className}) => {
               <ShoppingCart size={26}/>
               <div className='flex flex-col leading-4'>
                 <b>Корзина</b>
-                <b className='flex'>пустая</b>
+                <b className='flex'>пуста</b>
               </div>
             </Button>
           </div>
